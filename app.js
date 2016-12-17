@@ -1,7 +1,7 @@
 "use strict";
 
 var express = require("express");
-var posts = require("./mock/posts.json");
+var posts = require("./src/mock/posts.json");
 
 var app = express();
 
