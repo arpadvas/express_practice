@@ -2,30 +2,30 @@ extends layout.jade
 block content
     .container.mt-2.text-xs-center
       h1.display-4 Current weather
-      p 24 hours weather forecast in #{locals.name}
+      p 24 hours weather forecast in #{locals.city.name}
       .row
         .col-md-6.offset-md-3
           p
             button.btn.btn-secondary.w-100.text-xs-left(type='button', data-toggle='collapse', data-target='#collapseExample1', aria-expanded='false', aria-controls='collapseExample')
-              span.float-xs-right #{locals.main.temp} °C
-              |               12/19/2016 9h Light rain
+              span.float-xs-right #{locals.list[0].main.temp} °C
+              |               #{locals.list[0].dt_txt} #{locals.list[0].weather[0].description}
           #collapseExample1.collapse
             .card.card-block.p-0
               ul.list-group.text-muted.text-xs-left
                 li.list-group-item
-                  span.float-xs-right 14
+                  span.float-xs-right #{locals.list[0].main.temp_min} °C
                   |                   Min Temp
                 li.list-group-item
-                  span.float-xs-right 14
+                  span.float-xs-right #{locals.list[0].main.temp_max} °C
                   |                   Max Temp
                 li.list-group-item
-                  span.float-xs-right 2
+                  span.float-xs-right #{locals.list[0].main.humidity} %
                   |                   Humidity
                 li.list-group-item
-                  span.float-xs-right 1
+                  span.float-xs-right #{locals.list[0].wind.speed}
                   |                   Wind speed
                 li.list-group-item
-                  span.float-xs-right 1
+                  span.float-xs-right #{locals.list[0].clouds.all} %
                   |                   Cloudiness
           p
             button.btn.btn-secondary.w-100.text-xs-left(type='button', data-toggle='collapse', data-target='#collapseExample2', aria-expanded='false', aria-controls='collapseExample')

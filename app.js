@@ -15,7 +15,7 @@ app.get("/", function(req, res) {
 
 app.get("/:city", function(req, res) {
 	var city = req.params.city;
-	request.get('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&units=metric&appid=c55d418452d87000440c7941c24c86d7', function(err, response, body) {
+	request.get('http://api.openweathermap.org/data/2.5/forecast?q=' + city + '&units=metric&appid=c55d418452d87000440c7941c24c86d7', function(err, response, body) {
 		if (!err && response.statusCode == 200) {
             var locals = JSON.parse(body);
 		res.render("post", locals);
