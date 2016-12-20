@@ -7,22 +7,22 @@ block content
         .col-md-6.offset-md-3
           p
             button.btn.btn-secondary.w-100.text-xs-left(type='button', data-toggle='collapse', data-target='#collapseExample1', aria-expanded='false', aria-controls='collapseExample')
-              span.float-xs-right #{locals.list[0].main.temp} °C
+              span.float-xs-right #{Math.round(locals.list[0].main.temp)} °C
               |               #{locals.list[0].dt_txt} #{locals.list[0].weather[0].description}
           #collapseExample1.collapse
             .card.card-block.p-0
               ul.list-group.text-muted.text-xs-left
                 li.list-group-item
-                  span.float-xs-right #{locals.list[0].main.temp_min} °C
+                  span.float-xs-right #{Math.round(locals.list[0].main.temp_min)} °C
                   |                   Min Temp
                 li.list-group-item
-                  span.float-xs-right #{locals.list[0].main.temp_max} °C
+                  span.float-xs-right #{Math.round(locals.list[0].main.temp_max)} °C
                   |                   Max Temp
                 li.list-group-item
                   span.float-xs-right #{locals.list[0].main.humidity} %
                   |                   Humidity
                 li.list-group-item
-                  span.float-xs-right #{locals.list[0].wind.speed}
+                  span.float-xs-right #{Math.round(locals.list[0].wind.speed*3.6)} km/h
                   |                   Wind speed
                 li.list-group-item
                   span.float-xs-right #{locals.list[0].clouds.all} %
@@ -49,4 +49,4 @@ block content
                 li.list-group-item
                   span.float-xs-right 1
                   |                   Cloudiness
-          a.btn.btn-primary.mt-2(href='/', role='button') New search
+          a.btn.btn-primary.mt-0(href='/', role='button') New search

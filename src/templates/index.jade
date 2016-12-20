@@ -1,12 +1,18 @@
 extends layout.jade
 block content
   .container.mt-2.text-xs-center
-      h1.display-4 Current weather
-      p Type a city to get current weather
-      form.form-inline(action='/', method='POST')
-        .form-group
-          label.sr-only(for='city_name') City
-          input#city_name.form-control(type='text', placeholder='City')
-        button.btn.btn-primary(type='submit') Get weather
+    if locals.message
+      .row
+        .col-md-6.offset-md-3
+          .alert.alert-danger(role='alert')
+            strong Bummer!
+            |  #{locals.message}
+    h1.display-4 Current weather
+    p Type a city to get current weather
+    form.form-inline(action='/city', method='POST')
+      .form-group
+        label.sr-only(for='city') City
+        input#city.form-control(type='text', placeholder='City', name='city')
+      button.btn.btn-primary(type='submit') Get weather
 
 

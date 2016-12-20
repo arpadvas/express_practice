@@ -1,5 +1,5 @@
 {
-  "name": "express_practice",
+  "name": "weather_app2",
   "version": "1.0.0",
   "description": "Express practice.",
   "main": "app.js",
@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/arpadvas/express_practice#readme",
   "dependencies": {
+    "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "jade": "^1.11.0",
     "request": "^2.79.0"
