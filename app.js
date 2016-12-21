@@ -20,11 +20,15 @@ app.get("/", function(req, res) {
 app.post("/city", function(req, res) {
 	var city = req.body.city;
 	request.get('http://api.openweathermap.org/data/2.5/forecast?q=' + city + '&units=metric&appid=c55d418452d87000440c7941c24c86d7', function(err, response, body) {
-		var locals = JSON.parse(body);
+		var weatherInfo = JSON.parse(body);
+		var weatherData = [];
 		if (!err && response.statusCode == 200) {
-			res.render("post", locals);
+			for (var i = 0; i < 8; i++)
+			weatherData.push(weatherInfo.list[i]);
+			weatherData[0].city = weatherInfo.city.name;
+			res.render("post", {weatherData: weatherData});
         } else {
-        	res.render("index", locals);
+        	res.render("index", weatherInfo);
         }
 	});
 });

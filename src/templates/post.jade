@@ -1,52 +1,32 @@
 extends layout.jade
 block content
     .container.mt-2.text-xs-center
-      h1.display-4 Current weather
-      p 24 hours weather forecast in #{locals.city.name}
+      h1.display-4 Weather forecast
+      p 24 hours weather forecast in #{weatherData[0].city}
       .row
         .col-md-6.offset-md-3
-          p
-            button.btn.btn-secondary.w-100.text-xs-left(type='button', data-toggle='collapse', data-target='#collapseExample1', aria-expanded='false', aria-controls='collapseExample')
-              span.float-xs-right #{Math.round(locals.list[0].main.temp)} °C
-              |               #{locals.list[0].dt_txt} #{locals.list[0].weather[0].description}
-          #collapseExample1.collapse
-            .card.card-block.p-0
-              ul.list-group.text-muted.text-xs-left
-                li.list-group-item
-                  span.float-xs-right #{Math.round(locals.list[0].main.temp_min)} °C
-                  |                   Min Temp
-                li.list-group-item
-                  span.float-xs-right #{Math.round(locals.list[0].main.temp_max)} °C
-                  |                   Max Temp
-                li.list-group-item
-                  span.float-xs-right #{locals.list[0].main.humidity} %
-                  |                   Humidity
-                li.list-group-item
-                  span.float-xs-right #{Math.round(locals.list[0].wind.speed*3.6)} km/h
-                  |                   Wind speed
-                li.list-group-item
-                  span.float-xs-right #{locals.list[0].clouds.all} %
-                  |                   Cloudiness
-          p
-            button.btn.btn-secondary.w-100.text-xs-left(type='button', data-toggle='collapse', data-target='#collapseExample2', aria-expanded='false', aria-controls='collapseExample')
-              span.float-xs-right 14 °C
-              |               12/19/2016 12h Sunshine
-          #collapseExample2.collapse
-            .card.card-block.p-0
-              ul.list-group.text-muted.text-xs-left
-                li.list-group-item
-                  span.float-xs-right 14
-                  |                   Min Temp
-                li.list-group-item
-                  span.float-xs-right 14
-                  |                   Max Temp
-                li.list-group-item
-                  span.float-xs-right 2
-                  |                   Humidity
-                li.list-group-item
-                  span.float-xs-right 1
-                  |                   Wind speed
-                li.list-group-item
-                  span.float-xs-right 1
-                  |                   Cloudiness
+          - for (var i = 0; i < weatherData.length; i++)
+              p
+                button.btn.btn-secondary.w-100.text-xs-left(type='button', data-toggle='collapse', data-target='#collapseExample' + i, aria-expanded='false', aria-controls='collapseExample')
+                  span.float-xs-right #{Math.round(weatherData[i].main.temp)} °C
+                  |              #{weatherData[i].dt_txt.slice(0,16)} #{weatherData[i].weather[0].description.charAt(0).toUpperCase() + weatherData[i].weather[0].description.slice(1)}
+              div(class='collapse', id='collapseExample' + i)
+                .card.card-block.p-0
+                  ul.list-group.text-muted.text-xs-left
+                    li.list-group-item
+                      span.float-xs-right #{Math.round(weatherData[i].main.temp_min)} °C
+                      |                   Min Temp
+                    li.list-group-item
+                      span.float-xs-right #{Math.round(weatherData[i].main.temp_max)} °C
+                      |                   Max Temp
+                    li.list-group-item
+                      span.float-xs-right #{weatherData[i].main.humidity} %
+                      |                   Humidity
+                    li.list-group-item
+                      span.float-xs-right #{Math.round(weatherData[i].wind.speed*3.6)} km/h
+                      |                   Wind speed
+                    li.list-group-item
+                      span.float-xs-right #{weatherData[i].clouds.all} %
+                      |                   Cloudiness
           a.btn.btn-primary.mt-0(href='/', role='button') New search
+

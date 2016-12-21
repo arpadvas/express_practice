@@ -7,12 +7,12 @@ block content
           .alert.alert-danger(role='alert')
             strong Bummer!
             |  #{locals.message}
-    h1.display-4 Current weather
-    p Type a city to get current weather
+    h1.display-4 Weather forecast
+    p Type a city to get 24h weather forecast
     form.form-inline(action='/city', method='POST')
       .form-group
         label.sr-only(for='city') City
         input#city.form-control(type='text', placeholder='City', name='city')
-      button.btn.btn-primary(type='submit') Get weather
+      button.btn.btn-primary.ml-1(type='submit') Get weather
 
 
